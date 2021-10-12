@@ -22,8 +22,9 @@ export class WebClient {
     createPostBox(username: any, password: any, name: any): Promise<boolean>;
     deletePostBox(username: any, password: any, name: any): Promise<boolean>;
     addToPostBox(username: any, password: any, name: any, owner: any, entry: any): Promise<boolean>;
+    removeFromPostBox(username: any, password: any, name: any, at: any): Promise<boolean>;
     clearPostBox(username: any, password: any, name: any): Promise<boolean>;
     readPostBox(username: any, password: any, name: any): Promise<any>;
-    existsPostBox(owner: any, name: any): Promise<any>;
+    existsPostBox(owner: any, name: any): Promise<boolean>;
     #private;
 }

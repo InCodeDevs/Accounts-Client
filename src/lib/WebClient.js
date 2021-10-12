@@ -287,6 +287,21 @@ class WebClient {
         return !j.error;
     }
 
+    async removeFromPostBox(username, password, name, at) {
+        const config = this.#fetchConfig;
+        config.body = JSON.stringify({
+            username,
+            password,
+            name,
+            at
+        })
+
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/remove", config )
+        const j = await r.json();
+
+        return !j.error;
+    }
+
     async clearPostBox(username, password, name) {
         const config = this.#fetchConfig;
         config.body = JSON.stringify({

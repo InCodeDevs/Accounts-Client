@@ -17,22 +17,17 @@ Install @incodelang/accounts-client with yarn
 ```
 
 
-## Usage/Examples
+## Examples
 
 ```javascript
 const {WebClient} = require('@incodelang/accounts-client');
 
-const client = new WebClient();
+const client = new WebClient(""); // enter the root url of the server here (leave empty for /) 
 
-client.init("") // enter the root url of the server here (leave empty for /)
-    .then(() => {
-        // the client is ready
-        //
-        // login with a username and a password
-        client.login("username", "password").then(success => {
-            console.log(success);
-        })
-    })
+// check the credentials of a user
+client.login("username", "password").then(success => {
+    console.log(success);
+})
 ```
 
 ## Authors

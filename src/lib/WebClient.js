@@ -314,6 +314,19 @@ class WebClient {
 
         return j.message;
     }
+
+    async existsPostBox(owner, name) {
+        const config = this.#fetchConfig;
+        config.body = JSON.stringify({
+            owner,
+            name
+        })
+
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/exists", config )
+        const j = await r.json();
+
+        return j.message;
+    }
 }
 
 module.exports = {

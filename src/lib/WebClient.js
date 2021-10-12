@@ -5,7 +5,6 @@
 
 class WebClient {
 
-    #f;
     #root;
     #fetchConfig = {
         method: "POST",
@@ -21,7 +20,6 @@ class WebClient {
 
     constructor(rootUrl) {
         this.#root = rootUrl;
-        this.#f = fetch;
     }
 
     async login(username, password) {
@@ -31,7 +29,7 @@ class WebClient {
             password: password
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/users/login", config)
+        const r = await fetch(this.#root + "/api/v1/user/users/login", config)
         const j = await r.json();
 
         return !j.error
@@ -44,7 +42,7 @@ class WebClient {
             password: password
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/users/create", config )
+        const r = await fetch(this.#root + "/api/v1/user/users/create", config )
         const j = await r.json();
 
         return !j.error;
@@ -57,7 +55,7 @@ class WebClient {
             password: password
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/users/delete", config )
+        const r = await fetch(this.#root + "/api/v1/user/users/delete", config )
         const j = await r.json();
 
         return !j.error;
@@ -71,7 +69,7 @@ class WebClient {
             password: password
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/users/update/username", config )
+        const r = await fetch(this.#root + "/api/v1/user/users/update/username", config )
         const j = await r.json();
 
         return !j.error;
@@ -85,7 +83,7 @@ class WebClient {
             password: newPassword
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/users/update/password", config )
+        const r = await fetch(this.#root + "/api/v1/user/users/update/password", config )
         const j = await r.json();
 
         return !j.error;
@@ -100,7 +98,7 @@ class WebClient {
             dataName: dataName
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/users/data/store", config )
+        const r = await fetch(this.#root + "/api/v1/user/users/data/store", config )
         const j = await r.json();
 
         return !j.error;
@@ -114,7 +112,7 @@ class WebClient {
             dataName: dataName
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/users/data/delete", config )
+        const r = await fetch(this.#root + "/api/v1/user/users/data/delete", config )
         const j = await r.json();
 
         return !j.error;
@@ -130,7 +128,7 @@ class WebClient {
                 dataName: dataName
             })
 
-            const r = await this.#f(this.#root + "/api/v1/user/users/data", config )
+            const r = await fetch(this.#root + "/api/v1/user/users/data", config )
             const j = await r.json();
 
             return j.message;
@@ -147,7 +145,7 @@ class WebClient {
             password: password
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/users/data/all", config )
+        const r = await fetch(this.#root + "/api/v1/user/users/data/all", config )
         const j = await r.json();
 
         return j.message;
@@ -160,7 +158,7 @@ class WebClient {
             username: username
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/users/exists", config )
+        const r = await fetch(this.#root + "/api/v1/user/users/exists", config )
         const j = await r.json();
 
         return j.message;
@@ -175,7 +173,7 @@ class WebClient {
             key: dataName
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/data/set", config )
+        const r = await fetch(this.#root + "/api/v1/user/data/set", config )
         const j = await r.json();
 
         return !j.error;
@@ -189,7 +187,7 @@ class WebClient {
             key: dataName
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/data/delete", config )
+        const r = await fetch(this.#root + "/api/v1/user/data/delete", config )
         const j = await r.json();
 
         return !j.error;
@@ -205,7 +203,7 @@ class WebClient {
             hash: hash
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/data/get", config )
+        const r = await fetch(this.#root + "/api/v1/user/data/get", config )
         const j = await r.json();
 
         if (hash) {
@@ -224,7 +222,7 @@ class WebClient {
             newUser: newUser
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/data/allow", config )
+        const r = await fetch(this.#root + "/api/v1/user/data/allow", config )
         const j = await r.json();
 
         return !j.error;
@@ -239,7 +237,7 @@ class WebClient {
             newUser: newUser
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/data/allow", config )
+        const r = await fetch(this.#root + "/api/v1/user/data/allow", config )
         const j = await r.json();
 
         return !j.error;
@@ -253,7 +251,7 @@ class WebClient {
             name: name
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/postboxes/create", config )
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/create", config )
         const j = await r.json();
 
         return !j.error;
@@ -267,7 +265,7 @@ class WebClient {
             name: name
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/postboxes/delete", config )
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/delete", config )
         const j = await r.json();
 
         return !j.error;
@@ -283,7 +281,7 @@ class WebClient {
             entry
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/postboxes/add", config )
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/add", config )
         const j = await r.json();
 
         return !j.error;
@@ -297,7 +295,7 @@ class WebClient {
             name
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/postboxes/clear", config )
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/clear", config )
         const j = await r.json();
 
         return !j.error;
@@ -311,7 +309,7 @@ class WebClient {
             name
         })
 
-        const r = await this.#f(this.#root + "/api/v1/user/postboxes/read", config )
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/read", config )
         const j = await r.json();
 
         return j.message;

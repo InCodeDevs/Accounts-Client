@@ -19,15 +19,9 @@ class WebClient {
         body: "{}"
     }
 
-    async init(rootUrl) {
-
+    constructor(rootUrl) {
         this.#root = rootUrl;
-
         this.#f = fetch;
-
-        console.log(this.#f)
-
-        return 0;
     }
 
     async login(username, password) {

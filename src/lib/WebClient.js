@@ -322,10 +322,9 @@ class WebClient {
             name
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/postboxes/exists", config )
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/exists", config);
         const j = await r.json();
-
-        return j.message;
+        return !j.message.includes("not");
     }
 }
 

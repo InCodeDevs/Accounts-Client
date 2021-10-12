@@ -3,7 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 export class WebClient {
-    init(rootUrl: any): Promise<number>;
+    constructor(rootUrl: any);
     login(username: any, password: any): Promise<boolean>;
     create(username: any, password: any): Promise<boolean>;
     delete(username: any, password: any): Promise<boolean>;

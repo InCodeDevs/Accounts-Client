@@ -30,9 +30,12 @@ class WebClient {
         })
 
         const r = await fetch(this.#root + "/api/v1/user/users/login", config)
-        const j = await r.json();
-
-        return !j.error
+        try {
+            const j = await r.json();
+            return !j.error
+        } catch {
+            return false;
+        }
     }
 
     async create(username, password) {
@@ -42,10 +45,13 @@ class WebClient {
             password: password
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/users/create", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/users/create", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async delete(username, password) {
@@ -55,10 +61,13 @@ class WebClient {
             password: password
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/users/delete", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/users/delete", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async updateUsername(username, password, newUsername) {
@@ -69,10 +78,13 @@ class WebClient {
             password: password
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/users/update/username", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/users/update/username", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async updatePassword(username, password, newPassword) {
@@ -83,10 +95,13 @@ class WebClient {
             password: newPassword
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/users/update/password", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/users/update/password", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async storeData_u(username, password, data, dataName) {
@@ -98,10 +113,13 @@ class WebClient {
             dataName: dataName
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/users/data/store", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/users/data/store", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async deleteData_u(username, password, dataName) {
@@ -112,10 +130,13 @@ class WebClient {
             dataName: dataName
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/users/data/delete", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/users/data/delete", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async getData_u(username, password, dataName) {
@@ -128,10 +149,13 @@ class WebClient {
                 dataName: dataName
             })
 
-            const r = await fetch(this.#root + "/api/v1/user/users/data", config )
-            const j = await r.json();
-
-            return j.message;
+            const r = await fetch(this.#root + "/api/v1/user/users/data", config)
+            try {
+                const j = await r.json();
+                return j.message;
+            } catch {
+                return false;
+            }
         } catch {
             return {};
         }
@@ -145,10 +169,13 @@ class WebClient {
             password: password
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/users/data/all", config )
-        const j = await r.json();
-
-        return j.message;
+        const r = await fetch(this.#root + "/api/v1/user/users/data/all", config)
+        try {
+            const j = await r.json();
+            return j.message;
+        } catch {
+            return false;
+        }
     }
 
     async existsUser(username) {
@@ -158,10 +185,13 @@ class WebClient {
             username: username
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/users/exists", config )
-        const j = await r.json();
-
-        return j.message;
+        const r = await fetch(this.#root + "/api/v1/user/users/exists", config)
+        try {
+            const j = await r.json();
+            return j.message;
+        } catch {
+            return false;
+        }
     }
 
     async storeData(username, password, data, dataName) {
@@ -173,10 +203,13 @@ class WebClient {
             key: dataName
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/data/set", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/data/set", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async deleteData(username, password, dataName) {
@@ -187,10 +220,13 @@ class WebClient {
             key: dataName
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/data/delete", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/data/delete", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async getData(username, password, dataName, hash = false) {
@@ -203,13 +239,16 @@ class WebClient {
             hash: hash
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/data/get", config )
-        const j = await r.json();
-
-        if (hash) {
-            return j;
-        } else {
-            return j.message;
+        const r = await fetch(this.#root + "/api/v1/user/data/get", config)
+        try {
+            const j = await r.json();
+            if (hash) {
+                return j;
+            } else {
+                return j.message;
+            }
+        } catch {
+            return false;
         }
     }
 
@@ -222,10 +261,13 @@ class WebClient {
             newUser: newUser
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/data/allow", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/data/allow", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async disallowDataAccess(username, password, dataName, newUser) {
@@ -237,10 +279,13 @@ class WebClient {
             newUser: newUser
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/data/allow", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/data/allow", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async createPostBox(username, password, name) {
@@ -251,10 +296,13 @@ class WebClient {
             name: name
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/postboxes/create", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/create", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async deletePostBox(username, password, name) {
@@ -265,10 +313,14 @@ class WebClient {
             name: name
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/postboxes/delete", config )
-        const j = await r.json();
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/delete", config)
+        try {
+            const j = await r.json();
 
-        return !j.error;
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async addToPostBox(username, password, name, owner, entry) {
@@ -281,10 +333,13 @@ class WebClient {
             entry
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/postboxes/add", config )
-        const j = await r.json();
-
-        return !j.error;
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/add", config)
+        try {
+            const j = await r.json();
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async removeFromPostBox(username, password, name, at) {
@@ -296,10 +351,14 @@ class WebClient {
             at
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/postboxes/remove", config )
-        const j = await r.json();
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/remove", config)
+        try {
+            const j = await r.json();
 
-        return !j.error;
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async clearPostBox(username, password, name) {
@@ -310,10 +369,14 @@ class WebClient {
             name
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/postboxes/clear", config )
-        const j = await r.json();
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/clear", config)
+        try {
+            const j = await r.json();
 
-        return !j.error;
+            return !j.error;
+        } catch {
+            return false;
+        }
     }
 
     async readPostBox(username, password, name) {
@@ -324,10 +387,13 @@ class WebClient {
             name
         })
 
-        const r = await fetch(this.#root + "/api/v1/user/postboxes/read", config )
-        const j = await r.json();
-
-        return j.message;
+        const r = await fetch(this.#root + "/api/v1/user/postboxes/read", config)
+        try {
+            const j = await r.json();
+            return j.message;
+        } catch {
+            return false;
+        }
     }
 
     async existsPostBox(owner, name) {
@@ -338,8 +404,12 @@ class WebClient {
         })
 
         const r = await fetch(this.#root + "/api/v1/user/postboxes/exists", config);
-        const j = await r.json();
-        return !j.message.includes("not");
+        try {
+            const j = await r.json();
+            return !j.message.includes("not");
+        } catch {
+            return false;
+        }
     }
 }
 

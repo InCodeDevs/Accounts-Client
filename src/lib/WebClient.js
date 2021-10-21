@@ -411,6 +411,22 @@ class WebClient {
             return false;
         }
     }
+
+    async createToken(username, password) {
+        const config = this.#fetchConfig;
+        config.body = JSON.stringify({
+            username,
+            password
+        })
+
+        const r = await fetch(this.#root + "/api/v1/user/tokens/create", config)
+        try {
+            const j = await r.json();
+            return j.message;
+        } catch {
+            return false;
+        }
+    }
 }
 
 module.exports = {

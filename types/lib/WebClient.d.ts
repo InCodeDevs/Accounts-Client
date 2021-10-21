@@ -26,5 +26,6 @@ export class WebClient {
     clearPostBox(username: any, password: any, name: any): Promise<boolean>;
     readPostBox(username: any, password: any, name: any): Promise<any>;
     existsPostBox(owner: any, name: any): Promise<boolean>;
+    createToken(username: any, password: any): Promise<any>;
     #private;
 }

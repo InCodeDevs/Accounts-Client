@@ -1,6 +1,8 @@
 
 # @incodelang/accounts-client
 
+**Merged into [InCodeDevs/InCode](https://github.com/InCodeDevs/InCode)**
+
 This package is a client for websites to interact with [@incodelang/accounts](https://github.com/InCodeDevs/Accounts)
 ## Installation
 
